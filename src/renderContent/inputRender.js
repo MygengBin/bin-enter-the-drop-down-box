@@ -8,13 +8,15 @@ exports.renderDomInput =  ({
     listId='',
     inputId='',
     showArrow=false,
-    searchControlHeightInitial='1em'
+    searchControlHeightInitial='1em',
+    placeholder='请输入文本框显示的内容',
+    fontSize='1em',
 }) => {
     if(!dom) return {code:0,message:'DOM is null!'};
     if(!inputId) return {code:0,message:'inputId is null!'};
     dom.insertAdjacentHTML('afterbegin',`
-    <div class="input-search-division-${timestamp}" style="height:${searchControlHeightInitial}">
-        <input type="text" id="${inputId}" style="height:inherit;" class="bin-enter-the-drop-down-box-${timestamp}">
+    <div class="input-search-division-${timestamp}" style="height:${searchControlHeightInitial};font-size:${fontSize}">
+        <input type="text" id="${inputId}" placeholder="${placeholder}" style="height:inherit;" class="bin-enter-the-drop-down-box-${timestamp}">
         ${showArrow?`<div class="toggle-arrow-${timestamp}" id="toggleArrow${timestamp}">&gt;</div>`:''}        
     </div>`);  
     if(showArrow){

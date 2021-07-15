@@ -3,11 +3,14 @@ exports.renderInputBoxStyleDefault =  ({timestamp}) => {
     const id = `binEnterTheDropDownBoxStyle_${timestamp}`;
     headDom.insertAdjacentHTML('afterbegin',`
     <style id="${id}">
+    /*
+    border:1px solid black;
+            box-sizing: border-box;
+    */
         .input-search-division-${timestamp}{
             width:100%;
             position:relative;
-            border:1px solid black;
-            box-sizing: border-box;
+            
         }
         .bin-enter-the-drop-down-box-${timestamp}{
             width:100%;

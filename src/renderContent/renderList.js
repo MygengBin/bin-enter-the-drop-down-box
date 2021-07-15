@@ -34,6 +34,7 @@ exports.renderList = ({
     dom=null,
     timestamp='',
     listItemValueArray=listItemValueArrayInitial,
+    fontSize='1em',
     listItemOnClick=({value='',inputId=''})=>{
         console.log(value);
         console.log(inputId);
@@ -44,7 +45,7 @@ exports.renderList = ({
     if(!timestamp) return {code:0,message:'timestamp is null'};
     if(!orderListId || !String(orderListId)) return {code:0,message:'orderListId is null! '};
     if(!document.getElementById(orderListId)){
-        dom.insertAdjacentHTML('beforeend',`<ul class="bin-enter-the-drop-down-box-order-list-${timestamp}" id="${orderListId}"></ul>`);
+        dom.insertAdjacentHTML('beforeend',`<ul class="bin-enter-the-drop-down-box-order-list-${timestamp}" style="font-size:${fontSize}" id="${orderListId}"></ul>`);
     }
     
 

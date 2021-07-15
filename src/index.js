@@ -5,10 +5,13 @@ const {renderListStyle} = require('./css/listStyle');
 const {defineClassOrId} = require('./configuration/defineClassOrId');
 window.binEnterTheDropDownBox = class{    
     inputInitialStyleId='';
+    resultProfile={};
     constructor({
         dom=null,
         showArrow=false,
+        placeholder='请输入搜索框显示的内容',
         searchControlHeightInitial='1em',
+        fontSize='1em',
         listItemOnClick = ({value='',inputId=''})=>{
             if(!inputId) return {code:0,message:'input id is null'};
             console.log(value);
@@ -26,7 +29,7 @@ window.binEnterTheDropDownBox = class{
         dom.style.overflow='hidden';
         const dateNow =`${ Date.parse(new Date())+parseInt(Math.random()*1000) }`;
         const resultProfile=  defineClassOrId({timestamp:String(dateNow),});
-        console.log(resultProfile);
+        this.resultProfile = resultProfile;
         clearDomInnerHTML(dom);
         this.inputInitialStyleId = renderInputBoxStyleDefault({timestamp:dateNow});
         renderList({
@@ -36,11 +39,14 @@ window.binEnterTheDropDownBox = class{
             listItemOnClick,
             listItemValueArray,
             orderListId:resultProfile.UN_ORDER_LIST_ID,
+            fontSize
         });
         
         renderDomInput({
+            fontSize,
             showArrow,
             dom,
+            placeholder,
             searchControlHeightInitial,
             timestamp:dateNow,
             listId:resultProfile.UN_ORDER_LIST_ID,
