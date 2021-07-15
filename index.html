@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>test</title>
+    <style>
+        /* public */
+        @media screen {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        #box {
+            width: 90%;
+            margin: 1em auto 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        onload = () => {
+            new binEnterTheDropDownBox({
+                dom: document.getElementById('box'),
+                searchControlHeightInitial:'2em',
+                // listItemValueArray: [
+                //     { text: '1', value: '1' },
+                //     { text: '2', value: '2' },
+                //     { text: '3', value: '3' },
+                // ],
+                listItemOnClick({value,inputId}) {
+                    console.log(value);
+                    document.getElementById(inputId).value=value.f_Name;
+                },
+                reRenderArrayFunction({searchValue=''}) {
+                    // this is possible is asynchronous , need to return with promise
+                    // formatter
+                    /* 
+                        {
+                            text:'',
+                            value:{} //can any formatter
+                        }
+                    */
+                    return new Promise((resolve, reject) => {
+                        $.ajax({
+                            url: "http://lianpeitest.qipeisq.com/appapi/reg/getUserByFilter",
+                            method: 'POST',
+                            dataType: 'json',
+                            data: {
+                                userName: '',
+                                userPhone: searchValue,
+                                userType: 3,
+                                ust: 'kmdoZW6tZGpmZmhlapuXlGnhag==',
+                            },
+                            success: (res) => {
+                                if(Number(res.code)!==1){
+                                    console.log(res);
+                                    return resolve([{text:'暂无信息',value:'暂无信息'}]);
+                                }
+                                resolve(res.data.map(item=>{
+                                    return{
+                                        value:{...item},
+                                        text:item.f_Name,
+                                    }
+                                }).filter(item=>item.text));
+                            },
+                            error:reason=>reject(reason),
+                        })
+                    })
+                },
+                reRenderArrayFunctionCatch(reason) {
+                    console.log(reason);
+                },
+
+
+
+            });
+        }
+    </script>
+</body>
+
+</html>
