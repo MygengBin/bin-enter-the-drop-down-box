@@ -16,8 +16,10 @@ function renderListItem({
     if(!timestamp) return {code:0,message:'timestamp is null!'};
     if(!orderListDom) return {code:0,message:'order list dom is null!'};    
     const li = document.createElement('li');
+    console.log(`li is there !!!!!!!!!!!`);
     li.className=`bin-enter-the-drop-down-box-order-list-item-${timestamp}`;
     li.onclick = () => {
+        console.log(`list item before on click `);
         onclickFunction({value:listValue,inputId,});
         orderListDom.innerHTML='';
         orderListDom.append(renderListItem({
@@ -27,6 +29,7 @@ function renderListItem({
         }));
         orderListDom.style.display='none';
     }
+    console.log(li.onclick);
     li.innerText = listText;
     return li;
 }

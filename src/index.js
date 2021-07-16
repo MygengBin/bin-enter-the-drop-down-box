@@ -3,7 +3,7 @@ const {clearDomInnerHTML,renderDomInput} = require('./renderContent/inputRender'
 const {renderList} = require('./renderContent/renderList');
 const {renderListStyle} = require('./css/listStyle');
 const {defineClassOrId} = require('./configuration/defineClassOrId');
-window.binEnterTheDropDownBox = class{    
+window.binEnterTheDropDownBox = class{
     inputInitialStyleId='';
     resultProfile={};
     constructor({
@@ -62,8 +62,9 @@ window.binEnterTheDropDownBox = class{
         }
         inputDom.onblur = () =>{
             setTimeout(() => {
+                console.log('input text on blur::::');
                 document.getElementById(resultProfile.UN_ORDER_LIST_ID).style.display='none';   
-            });
+            },1000);
         }
         inputDom.oninput = () =>{
             console.log('trig on input');

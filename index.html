@@ -31,13 +31,13 @@
                 dom: document.getElementById('box'),
                 searchControlHeightInitial:'2em',
                 placeholder:'请输入搜索框显示的内容',
-                // listItemValueArray: [
-                //     { text: '1', value: '1' },
-                //     { text: '2', value: '2' },
-                //     { text: '3', value: '3' },
-                // ],
+                listItemValueArray: [
+                    { text: '1', value: '1' },
+                    { text: '2', value: '2' },
+                    { text: '3', value: '3' },
+                ],
                 listItemOnClick({value,inputId}) {
-                    console.log(value);
+                    alert(value);
                     document.getElementById(inputId).value=value.f_Name;
                 },
                 reRenderArrayFunction({searchValue=''}) {
