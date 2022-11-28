@@ -18,7 +18,7 @@ function renderListItem({
     const li = document.createElement('li');
     console.log(`li is there !!!!!!!!!!!`);
     li.className=`bin-enter-the-drop-down-box-order-list-item-${timestamp}`;
-    li.onclick = () => {
+    li.onmousedown = () => {
         console.log(`list item before on click `);
         onclickFunction({value:listValue,inputId,});
         orderListDom.innerHTML='';
@@ -29,7 +29,7 @@ function renderListItem({
         }));
         orderListDom.style.display='none';
     }
-    console.log(li.onclick);
+    console.log(li.onmousedown);
     li.innerText = listText;
     return li;
 }

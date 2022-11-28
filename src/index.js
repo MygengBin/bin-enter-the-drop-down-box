@@ -64,7 +64,7 @@ window.binEnterTheDropDownBox = class{
             setTimeout(() => {
                 console.log('input text on blur::::');
                 document.getElementById(resultProfile.UN_ORDER_LIST_ID).style.display='none';   
-            },1000);
+            });
         }
         inputDom.oninput = () =>{
             console.log('trig on input');

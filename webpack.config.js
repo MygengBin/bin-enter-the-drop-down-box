@@ -1,12 +1,16 @@
 const path = require('path');
-const webpack = require('webpack');
-const uglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 module.exports={
     entry:'./src/index.js',
     output:{
-        filename: "main.js",
+        filename: path.basename(__dirname)+".js",
         path: path.resolve(__dirname, 'dist')
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserWebpackPlugin()]
     },
     module:{
         rules:[
@@ -29,18 +33,7 @@ module.exports={
         ],
     },
     plugins:[
-        new webpack.BannerPlugin({
-            banner:()=>{
-                const newData = new Date();
-                return `
-耿彬
-${newData.getFullYear()}年${newData.getMonth()+1}月${newData.getDate()}日 ${newData.getHours()}点${newData.getMinutes()}分
-输入下拉框        
-                    `
-            },
-            entryOnly:false,
-        }),
-        new uglifyJsWebpackPlugin(),
+        new CleanWebpackPlugin(),
         new htmlWebpackPlugin({
             filename:'index.html',
             template:'index.html'  
