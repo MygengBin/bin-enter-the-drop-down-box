@@ -14,8 +14,9 @@ exports.renderDomInput =  ({
 }) => {
     if(!dom) return {code:0,message:'DOM is null!'};
     if(!inputId) return {code:0,message:'inputId is null!'};
+    //    height:${searchControlHeightInitial};
     dom.insertAdjacentHTML('afterbegin',`
-    <div class="input-search-division-${timestamp}" style="height:${searchControlHeightInitial};font-size:${fontSize}">
+    <div class="input-search-division-${timestamp}" style="font-size:${fontSize}">
         <input type="text" id="${inputId}" placeholder="${placeholder}" style="height:inherit;" class="bin-enter-the-drop-down-box-${timestamp}">
         ${showArrow?`<div class="toggle-arrow-${timestamp}" id="toggleArrow${timestamp}">&gt;</div>`:''}        
     </div>`);  

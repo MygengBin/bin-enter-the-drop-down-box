@@ -26,7 +26,7 @@ window.binEnterTheDropDownBox = class{
         }
     }){
         if(!dom) return {code:0,message:'DOM is null!'};
-        dom.style.overflow='hidden';
+//        dom.style.overflow='hidden';
         const dateNow =`${ Date.parse(new Date())+parseInt(Math.random()*1000) }`;
         const resultProfile=  defineClassOrId({timestamp:String(dateNow),});
         this.resultProfile = resultProfile;

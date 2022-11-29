@@ -3,14 +3,9 @@ exports.renderInputBoxStyleDefault =  ({timestamp}) => {
     const id = `binEnterTheDropDownBoxStyle_${timestamp}`;
     headDom.insertAdjacentHTML('afterbegin',`
     <style id="${id}">
-    /*
-    border:1px solid black;
-            box-sizing: border-box;
-    */
         .input-search-division-${timestamp}{
             width:100%;
-            position:relative;
-            
+                    position:relative;height: inherit
         }
         .bin-enter-the-drop-down-box-${timestamp}{
             width:100%;
@@ -18,6 +13,7 @@ exports.renderInputBoxStyleDefault =  ({timestamp}) => {
             border: none;
             outline:0;
             display:flex;
+                                           height: inherit
         }
         .toggle-arrow-${timestamp}{
             position:absolute;
